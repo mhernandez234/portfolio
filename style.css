@@ -1,0 +1,263 @@
+/* --- Variables de Diseño --- */
+:root {
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+  --accent-color: #38bdf8;
+  --card-bg: #1e293b;
+  --input-bg: #1e293b;
+}
+
+/* --- Estilos Base --- */
+body {
+  margin: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+/* --- Navegación --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10%;
+  position: sticky;
+  top: 0;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent-color);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* --- Hero Section --- */
+header {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 10%;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+h1 span {
+  color: var(--accent-color);
+}
+
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+/* --- Proyectos (Grid y Cards) --- */
+#proyectos {
+  padding: 4rem 10%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  /* Lógica para alinear todo al mismo nivel */
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+.card p {
+  flex-grow: 1; /* Esto empuja el carrusel y el botón hacia abajo */
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Carrusel (Altura Consistente) --- */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #000;
+}
+
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+  width: 100%;
+  min-width: 100%;
+  /* Obliga a todas las imágenes a tener la misma altura */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.prev-btn,
+.next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: 10px;
+}
+.next-btn {
+  right: 10px;
+}
+
+/* --- Formulario de Contacto --- */
+#contacto {
+  padding: 4rem 10%;
+  background: #0b1120;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 30px auto 0;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 15px;
+  gap: 15px;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* --- Botones --- */
+.btn,
+.btn-contact {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover,
+.btn-contact:hover {
+  filter: brightness(1.1);
+}
+
+#status {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  nav ul {
+    display: none;
+  } /* Podrías añadir un menú hamburguesa luego */
+}

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marcos Hernández | Web Developer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/your-code.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">MH</div>
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <header id="home">
+      <div class="hero">
+        <h1>Hola, soy <span>Marcos Hernández</span></h1>
+        <p>
+          Desarrollador Web enfocado en crear soluciones digitales eficientes y
+          elegantes.
+        </p>
+        <div class="social-links">
+          <a href="https://github.com/mhernandez234" target="_blank">GitHub</a>
+          <a
+            href="https://www.linkedin.com/in/marcos-hernandez-990681238/"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <section id="proyectos">
+      <h2>Mis Proyectos</h2>
+      <div class="grid" id="project-grid">
+        <div class="card">
+          <h3>E-Commerce</h3>
+          <p>
+            Plataforma de comercio electrónico completa desarrollada como
+            proyecto final del curso Jóvenes a Programar (JAP). Sistema web con
+            carrito de compras, gestión de productos, perfiles de usuario,
+            autenticación JWT y proceso de checkout completo.
+          </p>
+
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="img/proyecto-1/index.html.png" alt="Pagina Principal" />
+              <img src="img/proyecto-1/login.png" alt="Login" />
+              <img src="img/proyecto-1/articulos.jpg" alt="Articulos" />
+              <img src="img/proyecto-1/perfil-sitio.png" alt="Perfil" />
+              <img
+                src="img/proyecto-1/carrito-perfil.png"
+                alt="Carrito de Compras"
+              />
+              <img
+                src="img/proyecto-1/carrito-compra.png"
+                alt="Formas de Pago"
+              />
+            </div>
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+          </div>
+
+          <a href="https://github.com/mhernandez234/proyecto_final" class="btn"
+            >Ver código</a
+          >
+        </div>
+
+        <div class="card">
+          <h3>Planilla de Liquidación Agropecuaria</h3>
+          <p>
+            Prototipo funcional desarrollado como solución personalizada para la
+            gestión de liquidaciones de ganado. El proyecto nació de la
+            necesidad de un cliente de agilizar el cálculo y la generación de
+            reportes de forma inmediata. Implementé un diseño Responsive
+            centrado en la usabilidad (UX) para permitir la carga de datos tanto
+            en oficina como en campo vía móvil. Por razones de confidencialidad
+            y seguridad, los datos del negocio fueron modificados. Se presenta
+            aquí una versión de demostración con funcionalidades completas.
+            <a
+              href="https://mhernandez234.github.io/planilla-liquidacion/"
+              target="_blank"
+              >Ver Demostración en Vivo</a
+            >
+          </p>
+
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img
+                src="img/proyecto-2/index.png"
+                alt="Formulario de Liquidacion"
+              />
+              <img
+                src="img/proyecto-2/rep-pdf.png"
+                alt="Representacion del PDF"
+              />
+              <img
+                src="img/proyecto-2/pdf-descarga.png"
+                alt="Descarga del PDF"
+              />
+            </div>
+            <button class="prev-btn">&#10094;</button>
+            <button class="next-btn">&#10095;</button>
+          </div>
+
+          <a
+            href="https://github.com/mhernandez234/planilla-liquidacion"
+            class="btn"
+            >Ver código</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer id="contacto">
+      <h2>¿Hablamos?</h2>
+      <p>Siempre estoy abierto a nuevos retos y colaboraciones.</p>
+      <form
+        id="my-form"
+        action="https://formspree.io/f/xwvnarlk"
+        method="POST"
+        class="contact-form"
+      >
+        <h3>Formulario de Contacto</h3>
+        <input
+          type="hidden"
+          name="_subject"
+          id="email-subject"
+          value="Contacto desde Portfolio"
+        />
+        <input type="text" name="name" placeholder="Tu Nombre" required />
+        <input type="email" name="email" placeholder="Tu Email" required />
+        <textarea
+          name="message"
+          placeholder="Escribe tu mensaje aquí..."
+          required
+        ></textarea>
+
+        <button id="submit-btn" type="submit" class="btn-contact">
+          Enviar Mensaje
+        </button>
+        <p id="status"></p>
+      </form>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
