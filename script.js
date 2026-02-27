@@ -1,27 +1,13 @@
-// Animación simple al hacer scroll
-const observerOptions = {
-  threshold: 0.1,
-};
+// --- Utilidad: Debounce ---
+function debounce(fn, delay) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll(".card").forEach((card) => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(20px)";
-  card.style.transition = "all 0.6s ease-out";
-  observer.observe(card);
-});
-
-console.log("Portfolio de Marcos Hernández cargado correctamente.");
-
-// Funcion del carrusel
+// --- Carruseles ---
 const carousels = document.querySelectorAll(".carousel-container");
 
 carousels.forEach((carousel) => {
@@ -31,75 +17,62 @@ carousels.forEach((carousel) => {
   const nextBtn = carousel.querySelector(".next-btn");
 
   let counter = 0;
+  let slideWidth = images[0].clientWidth;
 
   function updateCarousel() {
-    // Usamos item(0) o el índice actual para asegurar que el tamaño sea correcto
-    const size = images[0].clientWidth;
-    slide.style.transform = "translateX(" + -size * counter + "px)";
+    slide.style.transform = `translateX(${-slideWidth * counter}px)`;
   }
 
   nextBtn.addEventListener("click", () => {
-    if (counter >= images.length - 1) {
-      counter = 0;
-    } else {
-      counter++;
-    }
+    counter = counter >= images.length - 1 ? 0 : counter + 1;
     updateCarousel();
   });
 
   prevBtn.addEventListener("click", () => {
-    if (counter <= 0) {
-      counter = images.length - 1;
-    } else {
-      counter--;
-    }
+    counter = counter <= 0 ? images.length - 1 : counter - 1;
     updateCarousel();
   });
 
-  // Ajustar el carrusel cuando se cambia el tamaño de la ventana
-  window.addEventListener("resize", updateCarousel);
+  window.addEventListener(
+    "resize",
+    debounce(() => {
+      slideWidth = images[0].clientWidth;
+      updateCarousel();
+    }, 150),
+  );
 });
 
-// --- Animación de entrada (Intersection Observer) ---
-const obsOptions = { threshold: 0.1 };
-
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, obsOptions);
+// --- Animación de entrada con IntersectionObserver ---
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1 },
+);
 
 document.querySelectorAll(".card").forEach((card) => {
-  card.style.opacity = "0";
-  card.style.transform = "translateY(20px)";
-  card.style.transition = "all 0.6s ease-out";
-  obs.observe(card);
+  observer.observe(card);
 });
 
-//Formulario de contacto
+// --- Formulario de contacto ---
 const form = document.getElementById("my-form");
 const status = document.getElementById("status");
 
 async function handleSubmit(event) {
   event.preventDefault();
-  const form = event.target;
+
   const subjectInput = document.getElementById("email-subject");
-
-  // Guardamos el valor original para no acumular fechas si el usuario reintenta
   const baseSubject = "Contacto desde Portfolio";
-
-  // Creamos una marca de tiempo única (Ej: 24/2/2026, 14:30:05)
   const timestamp = new Date().toLocaleString();
-
-  // Actualizamos el valor del input oculto antes de enviarlo
   subjectInput.value = `${baseSubject} - ID: ${timestamp}`;
 
   const data = new FormData(form);
   const button = form.querySelector(".btn-contact");
-  const status = document.getElementById("status");
 
   button.innerText = "Enviando...";
   button.disabled = true;
@@ -113,7 +86,6 @@ async function handleSubmit(event) {
       if (response.ok) {
         status.innerHTML = "¡Mensaje enviado con éxito!";
         form.reset();
-        // Restauramos el asunto base para el siguiente mensaje
         subjectInput.value = baseSubject;
       } else {
         status.innerHTML = "Error al enviar el mensaje.";
@@ -121,8 +93,9 @@ async function handleSubmit(event) {
       button.innerText = "Enviar Mensaje";
       button.disabled = false;
     })
-    .catch((error) => {
+    .catch(() => {
       status.innerHTML = "Error de conexión.";
+      button.innerText = "Enviar Mensaje";
       button.disabled = false;
     });
 }

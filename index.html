@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marcos Hernández | Web Developer</title>
     <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/your-code.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body>
     <nav>
       <div class="logo">MH</div>
       <ul>
         <li><a href="#home">Inicio</a></li>
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="#skills">Stack Tecnológico</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -37,6 +35,38 @@
         </div>
       </div>
     </header>
+
+    <section id="about">
+      <h2>Sobre Mí</h2>
+      <p>
+        Soy un apasionado desarrollador web con solida experiencia en
+        JavaScript, HTML, CSS y frameworks modernos. Me encanta transformar
+        ideas en aplicaciones funcionales y atractivas. Mi enfoque se centra en
+        la usabilidad y la experiencia del usuario, buscando siempre crear
+        interfaces intuitivas y eficientes.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Mi Stack Tecnológico</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <div class="stacks">
+            <img src="img/logos/html-logo.jpg" alt="HTML" title="HTML5" />
+            <img src="img/logos/css-logo.jpg" alt="CSS" title="CSS3" />
+            <img src="img/logos/js-logo.jpg" alt="JavaScript" title="JS ES6+" />
+          </div>
+        </div>
+        <div class="skill-category">
+          <h3>Backend & DB</h3>
+          <div class="stacks">
+            <img src="img/logos/nodejs-logo.jpg" alt="NodeJS" title="Node.js" />
+            <img src="img/logos/mysql-logo.jpg" alt="MySQL" title="MySQL" />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="proyectos">
       <h2>Mis Proyectos</h2>
@@ -69,7 +99,10 @@
             <button class="next-btn">&#10095;</button>
           </div>
 
-          <a href="https://github.com/mhernandez234/proyecto_final" class="btn"
+          <a
+            href="https://github.com/mhernandez234/proyecto_final"
+            target="_blank"
+            class="btn"
             >Ver código</a
           >
         </div>
@@ -113,6 +146,7 @@
 
           <a
             href="https://github.com/mhernandez234/planilla-liquidacion"
+            target="_blank"
             class="btn"
             >Ver código</a
           >
@@ -120,7 +154,7 @@
       </div>
     </section>
 
-    <footer id="contacto">
+    <section id="contacto">
       <h2>¿Hablamos?</h2>
       <p>Siempre estoy abierto a nuevos retos y colaboraciones.</p>
       <form
@@ -149,6 +183,9 @@
         </button>
         <p id="status"></p>
       </form>
+    </section>
+    <footer>
+      <p>&copy; 2026 Marcos Hernández - Desarrollado con pasión</p>
     </footer>
 
     <script src="script.js"></script>
