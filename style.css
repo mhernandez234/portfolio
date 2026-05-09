@@ -424,7 +424,8 @@ section h2::after {
   font-size: 0.8em;
 }
 
-.card p {
+.card p,
+li {
   flex-grow: 1;
   font-size: 0.9rem;
   color: var(--text-muted);
